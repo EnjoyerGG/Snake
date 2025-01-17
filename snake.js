@@ -54,10 +54,21 @@ function Snake(){
     
     this.x = this.x + this.xspeed*scl;
     this.y = this.y + this.yspeed*scl;
+
+    // 检查是否撞到边框
+    if (this.x < 0 || this.x >= width || this.y < 0 || this.y >= height) {
+        console.log('Game Over!'); // 输出游戏结束信息
+        this.total = 0;            // 重置蛇的长度
+        this.tail = [];            // 清空尾部
+        this.x = 0;                // 重置蛇头位置
+        this.y = 0;
+        this.xspeed = 1;           // 重置方向
+        this.yspeed = 0;
+    }
     
     //设定移动的范围，避免出界
-    this.x = constrain(this.x, 0, width-scl);
-    this.y = constrain(this.y, 0, height-scl);
+    //this.x = constrain(this.x, 0, width-scl);
+    //this.y = constrain(this.y, 0, height-scl);
   }
   
   this.show = function(){
